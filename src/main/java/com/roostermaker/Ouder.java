@@ -1,3 +1,5 @@
+package com.roostermaker;
+
 import java.util.ArrayList;
 
 public class Ouder extends Gezin {
@@ -5,12 +7,11 @@ public class Ouder extends Gezin {
     //private double beschikbareTijd;
     public ArrayList<Gezin> ouder = new ArrayList<>();
 
-    
-    public void ouderGezinslid(String naam, double beschikbareTijd){
-        super(naam, beschikbareTijd);
-        ouder.add(this);
-        
+    public Ouder(String naam, double beschikbareTijd, String gezinsverhouding) {
+        super(naam, beschikbareTijd, gezinsverhouding);
+        Gezin.gezin.add(this);
     }
+
 
     public String getNaam(){
         return this.naam;
