@@ -14,8 +14,6 @@ public class Gezin {
         gezin.add(this);
     }
 
-    
-
     public String getNaam(){
         return this.naam;
     }
