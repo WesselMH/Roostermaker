@@ -10,7 +10,7 @@ public class Gezin {
     public Gezin(String naam, double beschikbareTijd, String gezinverhouding) {
         this.naam = naam;
         this.beschikbareTijd = beschikbareTijd;
-        this.gezinverhouding = "";
+        this.gezinverhouding = gezinverhouding;
         gezin.add(this);
     }
 
