@@ -32,7 +32,9 @@ public class Gezin {
 
     public static void printGezin(){
         for (Gezin printGezin : gezin) {
-            System.out.println("Gezinslid: " + printGezin.getNaam() );
+            System.out.println("Gezinslid: " + printGezin.getNaam() + 
+            "(" + printGezin.getGezinverhouding() + ")");
+
         }
     }
 }

@@ -23,4 +23,17 @@ public class ScannerV3 implements IScanner{
     public String nextLine() {
         return scanner.nextLine();
     }
+
+    @Override
+    public Double nextDouble() {
+        while (true) {
+            try {
+                return Double.parseDouble(scanner.nextLine());
+            } 
+            catch (NumberFormatException e) {
+                System.out.println("Voer enkel komma getallen in.");
+            }
+        }
+    }
+    
 }

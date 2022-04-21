@@ -1,11 +1,8 @@
 package com.roostermaker;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Taken {
-    Scanner scanner = new Scanner(System.in);
-
     private String taak;
     private Double tijdDuur;
     public static ArrayList<Taken> taken = new ArrayList<>();
@@ -24,18 +21,29 @@ public class Taken {
         return tijdDuur;
     }
 
-    public static void maakNieuweTaak(Scanner scanner){
+    public static void maakNieuweTaak(IScanner scanner){
         System.out.println("Voer de naam van de taak in: ");
-        taak = scanner.nextLine();
-        System.out.println("Voer de tijds duur van de taak in: ");
-        tijdDuur = scanner.nextDouble();
-        Taken taken = new Taken(taak, tijdDuur);
+        String nieuweTaak = scanner.nextLine();
+        System.out.println("Voer de tijds duur van de taak in (in komma getak per uur): ");
+        double nieuweTijdDuur = scanner.nextDouble();
+        new Taken(nieuweTaak, nieuweTijdDuur);
     }
 
     public static void printTaken(){
+        System.out.println("Alle taken:");
         for (Taken printTaak : taken) {
-            System.out.println("Naam van de taak: " + printTaak.getTaak());
+            System.out.println(printTaak.getTaak() + 
+            "tijdsduur: " + printTaak.getTijdDuur() + "uur");
         }
+    }
+
+    public static void kiesTaak(IScanner scanner){
+        System.out.println("Kies een taak:");
+        for (Taken lijst : taken) {
+            System.out.println(lijst.getTaak());
+        }
+        String keuze = scanner.nextLine();
+
     }
 
     
