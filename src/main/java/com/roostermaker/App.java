@@ -14,9 +14,6 @@ public class App
         new Taken("Afwassen", 0.15);
         new Taken("Stofzuigen", 1.0);
         new Taken("Was op hangen", 0.30);
-        // Gezin.printGezin();
-        // Taken.printTaken();
-        // Taken.maakNieuweTaak(scanner);
         mainMenu(scanner);
 
         
@@ -63,7 +60,6 @@ public class App
                         break;
                 }
             } catch (Exception e) {
-                //TODO: handle exception
                 System.out.println("Error in method mainMenu in class App");
                 System.out.println(e);
                 pauseMenu(scanner);
