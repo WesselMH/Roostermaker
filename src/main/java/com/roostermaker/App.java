@@ -48,7 +48,7 @@ public class App
                         break;
                     case ("4"):
                         clearScreen();
-                        Taken.kiesTaak(scanner);
+                        Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
                     case ("0"):

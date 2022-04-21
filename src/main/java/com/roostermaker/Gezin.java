@@ -37,4 +37,13 @@ public class Gezin {
 
         }
     }
+
+    public static void kiesGezinslid(IScanner scanner) {
+        System.out.println("Kies een gezinslid:");
+        int teller = 1;
+        for (Gezin lijst : gezin) {
+            System.out.println(teller + ") " + lijst.getNaam());
+            teller++;
+        }
+    }
 }

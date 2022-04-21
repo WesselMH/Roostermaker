@@ -6,6 +6,7 @@ public class Taken {
     private String taak;
     private Double tijdDuur;
     public static ArrayList<Taken> taken = new ArrayList<>();
+    public static ArrayList<Taken> gekozenTaken = new ArrayList<>();
 
     public Taken(String taak, Double tijdDuur){
         this.taak = taak;
@@ -37,14 +38,21 @@ public class Taken {
         }
     }
 
-    public static void kiesTaak(IScanner scanner){
-        System.out.println("Kies een taak:");
-        for (Taken lijst : taken) {
-            System.out.println(lijst.getTaak());
-        }
-        String keuze = scanner.nextLine();
-
+    public static void taakSelecteren(IScanner scanner){
+        Gezin.kiesGezinslid(scanner);
+        kiesTaak(scanner);
     }
+
+    public static void kiesTaak(IScanner scanner){        
+        System.out.println("Kies een taak:");
+        int teller = 1;
+        for (Taken lijst : taken) {            
+            System.out.println(teller + ") " + lijst.getTaak());
+            teller++;
+        }
+    }
+
+
 
     
 }
