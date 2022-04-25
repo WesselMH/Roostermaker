@@ -25,7 +25,7 @@ public class Taken {
     public static void maakNieuweTaak(IScanner scanner){
         System.out.println("Voer de naam van de taak in: ");
         String nieuweTaak = scanner.nextLine();
-        System.out.println("Voer de tijds duur van de taak in (in komma getak per uur): ");
+        System.out.println("Voer de tijdsduur van de taak in (minuten): ");
         double nieuweTijdDuur = scanner.nextDouble();
         new Taken(nieuweTaak, nieuweTijdDuur);
     }
@@ -34,7 +34,7 @@ public class Taken {
         System.out.println("Alle taken:");
         for (Taken printTaak : taken) {
             System.out.println(printTaak.getTaak() + 
-            "tijdsduur: " + printTaak.getTijdDuur() + "uur");
+            ", tijdsduur: " + printTaak.getTijdDuur() + "uur");
         }
     }
 
