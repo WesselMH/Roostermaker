@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Gezin {
     protected String naam;
     protected Double beschikbareTijd;
-    private String gezinverhouding;
+    protected String gezinverhouding;
     public static ArrayList<Gezin> gezin = new ArrayList<>();
 
     public Gezin(String naam, double beschikbareTijd, String gezinverhouding) {
@@ -18,15 +18,32 @@ public class Gezin {
         return this.naam;
     }
 
-    public void setName(String name){
-        naam = name;
-    }
-
     public double getBeschikbareTijd() {
         return this.beschikbareTijd;
     }
 
     public void setBeschikbareTijd(Double tijd){
-        beschikbareTijd = tijd;
+        this.beschikbareTijd = tijd;
+    }
+
+    public String getGezinverhouding() {
+        return gezinverhouding;
+    }    
+
+    public static void printGezin(){
+        for (Gezin printGezin : gezin) {
+            System.out.println("Gezinslid: " + printGezin.getNaam() + 
+            "(" + printGezin.getGezinverhouding() + ")");
+
+        }
+    }
+
+    public static void kiesGezinslid(IScanner scanner) {
+        System.out.println("Kies een gezinslid:");
+        int teller = 1;
+        for (Gezin lijst : gezin) {
+            System.out.println(teller + ") " + lijst.getNaam());
+            teller++;
+        }
     }
 }
