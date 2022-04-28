@@ -8,12 +8,12 @@ public class App
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
 
-        new Kind("wessel", 4.0, "kind");
-        new Kind("jasmijn", 4.5, "kind");
+        new Kind("Wessel", 4.0, "kind");
+        new Kind("Jasmijn", 4.5, "kind");
         
-        new Taken("Afwassen", 0.15);
-        new Taken("Stofzuigen", 1.0);
-        new Taken("Was op hangen", 0.30);
+        new Taken("Afwassen", 15);
+        new Taken("Stofzuigen", 60);
+        new Taken("Was op hangen", 30);
         mainMenu(scanner);
 
         
