@@ -23,8 +23,7 @@ public class Taken {
     }
 
     public static void maakNieuweTaak(IScanner scanner){
-        System.out.println("Voer de naam van de taak in: ");
-        String nieuweTaak = scanner.nextLine();
+        String nieuweTaak = chechTaak(scanner);
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
         int nieuweTijdDuur = scanner.nextInt();
         new Taken(nieuweTaak, nieuweTijdDuur);
@@ -52,7 +51,25 @@ public class Taken {
         }
     }
 
-
-
-    
+    public static String chechTaak(IScanner scanner) {
+        while (true) {
+            Boolean isNotFound = false;
+            System.out.println("Voer de naam van de taak in: ");
+            String input = scanner.nextLine();
+            for (Taken taak : taken) {
+                if (taak.getTaak().equals(input)) {
+                    System.out.println("Sorry deze taak bestaat al.");
+                    App.pauseMenu(scanner);
+                    App.clearScreen();
+                    break;
+                }else{
+                    isNotFound = true;
+                    break;
+                }
+            }
+            if (isNotFound) {
+                return input;
+            }
+        }
+    }    
 }
