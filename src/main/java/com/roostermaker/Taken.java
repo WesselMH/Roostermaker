@@ -32,7 +32,7 @@ public class Taken {
     public static void printTaken(){
         System.out.println("Alle taken:");
         for (Taken printTaak : taken) {
-            System.out.println(printTaak.getTaak() + 
+            System.out.println("-" + printTaak.getTaak() + 
             ", tijdsduur: " + printTaak.getTijdDuur() + "minuten");
         }
     }

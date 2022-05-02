@@ -6,6 +6,8 @@ public class Kind extends Gezin {
         super(naam, beschikbareTijd, gezinsverhouding);
     }
 
-  
+    
+
+    
 
 } 

@@ -31,8 +31,9 @@ public class Gezin {
     }    
 
     public static void printGezin(){
+        System.out.println("Alle gezinsleden: ");
         for (Gezin printGezin : gezin) {
-            System.out.println("Gezinslid: " + printGezin.getNaam() + 
+            System.out.println("-" + printGezin.getNaam() + 
             "(" + printGezin.getGezinverhouding() + ")");
 
         }
@@ -45,5 +46,23 @@ public class Gezin {
             System.out.println(teller + ") " + lijst.getNaam());
             teller++;
         }
+    }
+    public static void maakNieuwGezinslid(IScanner scanner){
+        System.out.println("hier wordt een gezinslid gemaakt");
+    }
+
+    public static String bepaalVerhouding(String input) {
+        switch (input) {
+            case ("1"):
+                input = "Kind";
+                break;
+            case ("2"):
+                input = "Volwassenen";
+                break;
+            default:
+                System.out.println("Kies een gegeven optie.");
+                break;
+        }
+        return input;
     }
 }

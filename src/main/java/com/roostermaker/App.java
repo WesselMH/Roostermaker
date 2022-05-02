@@ -8,8 +8,9 @@ public class App
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
 
-        new Kind("Wessel", 4.0, "kind");
-        new Kind("Jasmijn", 4.5, "kind");
+        new Kind("Wessel", 240, Gezin.bepaalVerhouding("1"));
+        new Kind("Jasmijn", 270, "Kind");
+        new Ouder("Gert-jan", 240, "Ouder");
         
         new Taken("Afwassen", 15);
         new Taken("Stofzuigen", 60);
@@ -51,6 +52,9 @@ public class App
                         Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
+                        case ("5"):
+                        clearScreen();
+                        Gezin.maakNieuwGezinslid(scanner);
                     case ("0"):
                         break mainMenu;
                     default:
