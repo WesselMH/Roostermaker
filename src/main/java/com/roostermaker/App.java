@@ -52,14 +52,14 @@ public class App
                         Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
-                        case ("5"):
+                    case ("5"):
                         clearScreen();
                         Gezin.maakNieuwGezinslid(scanner);
                     case ("0"):
                         break mainMenu;
                     default:
                         clearScreen();
-                        System.out.println("dit doet niks");
+                        System.out.println("Voer geldige optie in.");
                         pauseMenu(scanner);
                         break;
                 }

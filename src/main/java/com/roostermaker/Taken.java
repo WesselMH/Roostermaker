@@ -33,21 +33,37 @@ public class Taken {
         System.out.println("Alle taken:");
         for (Taken printTaak : taken) {
             System.out.println("-" + printTaak.getTaak() + 
-            ", tijdsduur: " + printTaak.getTijdDuur() + "minuten");
+            ", tijdsduur: " + printTaak.getTijdDuur() + " minuten");
         }
     }
 
     public static void taakSelecteren(IScanner scanner){
-        Gezin.kiesGezinslid(scanner);
-        kiesTaak(scanner);
+        String geselecteerdeTaak = Gezin.kiesGezinslid(scanner);
+        kiesTaak(scanner, geselecteerdeTaak);
+
     }
 
-    public static void kiesTaak(IScanner scanner){        
-        System.out.println("Kies een taak:");
-        int teller = 1;
-        for (Taken lijst : taken) {            
-            System.out.println(teller + ") " + lijst.getTaak());
-            teller++;
+    public static String kiesTaak(IScanner scanner, String geselecteerdeTaak) {
+        String taak;
+        App.clearScreen();
+        while (true) {
+            System.out.println("Geselecteerd gezinslid: "+ geselecteerdeTaak + "\n" +
+                                "Kies een taak:");
+            int teller = 1;
+            for (Taken lijst : taken) {
+                System.out.println(teller + ") " + lijst.getTaak());
+                teller++;
+            }
+
+            int input = scanner.nextInt();
+            if (input > 0 && input <= taken.size()) {
+                taak = taken.get(input - 1).getTaak();                
+                return taak;
+            } else {
+                System.out.println("Kies een optie hier boven gegeven.");
+                App.pauseMenu(scanner);
+                App.clearScreen();
+            }
         }
     }
 

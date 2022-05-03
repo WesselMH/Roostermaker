@@ -3,11 +3,11 @@ import java.util.ArrayList;
 
 public class Gezin {
     protected String naam;
-    protected Double beschikbareTijd;
+    protected int beschikbareTijd;
     protected String gezinverhouding;
     public static ArrayList<Gezin> gezin = new ArrayList<>();
 
-    public Gezin(String naam, double beschikbareTijd, String gezinverhouding) {
+    public Gezin(String naam, int beschikbareTijd, String gezinverhouding) {
         this.naam = naam;
         this.beschikbareTijd = beschikbareTijd;
         this.gezinverhouding = gezinverhouding;
@@ -22,7 +22,7 @@ public class Gezin {
         return this.beschikbareTijd;
     }
 
-    public void setBeschikbareTijd(Double tijd){
+    public void setBeschikbareTijd(int tijd){
         this.beschikbareTijd = tijd;
     }
 
@@ -39,14 +39,28 @@ public class Gezin {
         }
     }
 
-    public static void kiesGezinslid(IScanner scanner) {
-        System.out.println("Kies een gezinslid:");
-        int teller = 1;
-        for (Gezin lijst : gezin) {
-            System.out.println(teller + ") " + lijst.getNaam());
-            teller++;
+    public static String kiesGezinslid(IScanner scanner) {
+        String gezinslid;
+        while (true) {
+            System.out.println("Kies een gezinslid:");
+            int teller = 1;
+            for (Gezin lijst : gezin) {
+                System.out.println(teller + ") " + lijst.getNaam());
+                teller++;
+            }
+
+            int input = scanner.nextInt();
+            if (input > 0 && input <= gezin.size()) {
+                gezinslid = gezin.get(input - 1).getNaam();
+                return gezinslid;
+            }else{
+                System.out.println("Kies een optie hier boven gegeven.");
+                App.pauseMenu(scanner);
+                App.clearScreen();
+            }
         }
     }
+
     public static void maakNieuwGezinslid(IScanner scanner){
         System.out.println("hier wordt een gezinslid gemaakt");
     }
