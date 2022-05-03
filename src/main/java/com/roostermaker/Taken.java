@@ -36,18 +36,19 @@ public class Taken {
             ", tijdsduur: " + printTaak.getTijdDuur() + " minuten");
         }
     }
-    //TODO werkt nog niet met afronding
+    
     public static void taakSelecteren(IScanner scanner) {
         String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
         String geselecteerdeTaak = kiesTaak(scanner, geselecteerdGezinslid);
-        while (true) {
+        selecteerLoop: while (true) {
             for (Taken gekozen : taken) {
                 if (geselecteerdeTaak.equals(gekozen.getTaak())) {
                     boolean bevestiging = bevestigingAanmaak(scanner);
                     if (bevestiging) {
                         gekozenTaken.add(new Taken(geselecteerdGezinslid, gekozen.getTijdDuur()));
-                    }else{
-                        break;
+                        break selecteerLoop;
+                    } else {
+                        break selecteerLoop;
                     }
                 }
             }
