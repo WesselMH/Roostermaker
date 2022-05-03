@@ -36,18 +36,47 @@ public class Taken {
             ", tijdsduur: " + printTaak.getTijdDuur() + " minuten");
         }
     }
-
-    public static void taakSelecteren(IScanner scanner){
-        String geselecteerdeTaak = Gezin.kiesGezinslid(scanner);
-        kiesTaak(scanner, geselecteerdeTaak);
-
+    //TODO werkt nog niet met afronding
+    public static void taakSelecteren(IScanner scanner) {
+        String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
+        String geselecteerdeTaak = kiesTaak(scanner, geselecteerdGezinslid);
+        while (true) {
+            for (Taken gekozen : taken) {
+                if (geselecteerdeTaak.equals(gekozen.getTaak())) {
+                    boolean bevestiging = bevestigingAanmaak(scanner);
+                    if (bevestiging) {
+                        gekozenTaken.add(new Taken(geselecteerdGezinslid, gekozen.getTijdDuur()));
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }
     }
 
-    public static String kiesTaak(IScanner scanner, String geselecteerdeTaak) {
+    private static boolean bevestigingAanmaak(IScanner scanner) {
+        while (true) {
+            System.out.println("Weet je het zeker?" + "\n" +
+                                "1) Ja zeker!!" + "\n" +
+                                "0) Nee doe toch maar niet....");
+            int input = scanner.nextInt();
+            if (input == 1) {
+                return true;
+            }if(input == 0){
+                return false;
+            }else{
+                System.out.println("Kies een geldige optie");
+                App.pauseMenu(scanner);
+                App.clearScreen();
+            }
+        }
+    }
+
+    public static String kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
         String taak;
         App.clearScreen();
         while (true) {
-            System.out.println("Geselecteerd gezinslid: "+ geselecteerdeTaak + "\n" +
+            System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
                                 "Kies een taak:");
             int teller = 1;
             for (Taken lijst : taken) {
