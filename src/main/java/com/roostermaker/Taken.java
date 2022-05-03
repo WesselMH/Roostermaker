@@ -11,7 +11,6 @@ public class Taken {
     public Taken(String taak, int tijdDuur){
         this.taak = taak;
         this.tijdDuur = tijdDuur;
-        taken.add(this);
     }
 
     public String getTaak() {
@@ -26,7 +25,7 @@ public class Taken {
         String nieuweTaak = chechTaak(scanner);
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
         int nieuweTijdDuur = scanner.nextInt();
-        new Taken(nieuweTaak, nieuweTijdDuur);
+        taken.add(new Taken(nieuweTaak, nieuweTijdDuur));
     }
 
     public static void printTaken(){
@@ -36,7 +35,7 @@ public class Taken {
             ", tijdsduur: " + printTaak.getTijdDuur() + " minuten");
         }
     }
-    
+
     public static void taakSelecteren(IScanner scanner) {
         String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
         String geselecteerdeTaak = kiesTaak(scanner, geselecteerdGezinslid);
@@ -45,7 +44,8 @@ public class Taken {
                 if (geselecteerdeTaak.equals(gekozen.getTaak())) {
                     boolean bevestiging = bevestigingAanmaak(scanner);
                     if (bevestiging) {
-                        gekozenTaken.add(new Taken(geselecteerdGezinslid, gekozen.getTijdDuur()));
+                        gekozenTaken.add(new Taken(geselecteerdeTaak, gekozen.getTijdDuur()));
+                        Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
                         break selecteerLoop;
                     } else {
                         break selecteerLoop;
