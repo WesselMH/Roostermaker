@@ -27,9 +27,4 @@ class TestScanner implements IScanner{
     public String nextLine() {
         return stringValue;
     }
-
-    @Override
-    public Double nextDouble() {
-        return doubleValue;
-    }
   }

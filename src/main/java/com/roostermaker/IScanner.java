@@ -16,6 +16,4 @@ public interface IScanner {
    * <p>   Stored Strings can be changed by using the method {@code setString()} on a valid object.
    */
   String nextLine();
-
-  Double nextDouble();
 }
