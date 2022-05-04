@@ -19,9 +19,8 @@ public class App
 
         // //TODO
         // Gezin placeHolder = new Gezin("Mérei", 10, "Almachtige");
-        // mainMenu(scanner);
-
         
+        mainMenu(scanner);       
     }
 
     public static void mainMenu(IScanner scanner){
