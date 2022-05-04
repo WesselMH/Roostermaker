@@ -8,16 +8,19 @@ public class App
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
 
-        new Kind("Wessel", 240, Gezin.bepaalVerhouding("1"));
-        new Kind("Jasmijn", 270, "Kind");
-        new Ouder("Gert-jan", 240, "Ouder");
+        Gezin.gezin.add(new Kind("Wessel", 240, Gezin.bepaalVerhouding("1")));
+        Gezin.gezin.add(new Kind("Jasmijn", 270, "Kind"));
+        Gezin.gezin.add(new Ouder("Gert-jan", 240, "Ouder"));
         
-        new Taken("Afwassen", 15);
-        new Taken("Stofzuigen", 60);
-        new Taken("Was op hangen", 30);
-        mainMenu(scanner);
+        Taken.taken.add(new Taken("Afwassen", 15));
+        Taken.taken.add(new Taken("Stofzuigen", 60));
+        Taken.taken.add(new Taken("Was op hangen", 30));
 
+
+        // //TODO
+        // Gezin placeHolder = new Gezin("Mérei", 10, "Almachtige");
         
+        mainMenu(scanner);       
     }
 
     public static void mainMenu(IScanner scanner){
@@ -52,14 +55,14 @@ public class App
                         Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
-                        case ("5"):
+                    case ("5"):
                         clearScreen();
                         Gezin.maakNieuwGezinslid(scanner);
                     case ("0"):
                         break mainMenu;
                     default:
                         clearScreen();
-                        System.out.println("dit doet niks");
+                        System.out.println("Voer geldige optie in.");
                         pauseMenu(scanner);
                         break;
                 }

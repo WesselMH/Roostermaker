@@ -11,7 +11,6 @@ public class Taken {
     public Taken(String taak, int tijdDuur){
         this.taak = taak;
         this.tijdDuur = tijdDuur;
-        taken.add(this);
     }
 
     public String getTaak() {
@@ -26,28 +25,75 @@ public class Taken {
         String nieuweTaak = chechTaak(scanner);
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
         int nieuweTijdDuur = scanner.nextInt();
-        new Taken(nieuweTaak, nieuweTijdDuur);
+        taken.add(new Taken(nieuweTaak, nieuweTijdDuur));
     }
 
     public static void printTaken(){
         System.out.println("Alle taken:");
         for (Taken printTaak : taken) {
             System.out.println("-" + printTaak.getTaak() + 
-            ", tijdsduur: " + printTaak.getTijdDuur() + "minuten");
+            ", tijdsduur: " + printTaak.getTijdDuur() + " minuten");
         }
     }
 
-    public static void taakSelecteren(IScanner scanner){
-        Gezin.kiesGezinslid(scanner);
-        kiesTaak(scanner);
+    public static void taakSelecteren(IScanner scanner) {
+        String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
+        String geselecteerdeTaak = kiesTaak(scanner, geselecteerdGezinslid);
+        selecteerLoop: while (true) {
+            for (Taken gekozen : taken) {
+                if (geselecteerdeTaak.equals(gekozen.getTaak())) {
+                    boolean bevestiging = bevestigingAanmaak(scanner);
+                    if (bevestiging) {
+                        gekozenTaken.add(new Taken(geselecteerdeTaak, gekozen.getTijdDuur()));
+                        Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
+                        break selecteerLoop;
+                    } else {
+                        break selecteerLoop;
+                    }
+                }
+            }
+        }
     }
 
-    public static void kiesTaak(IScanner scanner){        
-        System.out.println("Kies een taak:");
-        int teller = 1;
-        for (Taken lijst : taken) {            
-            System.out.println(teller + ") " + lijst.getTaak());
-            teller++;
+    private static boolean bevestigingAanmaak(IScanner scanner) {
+        while (true) {
+            System.out.println("Weet je het zeker?" + "\n" +
+                                "1) Ja zeker!!" + "\n" +
+                                "0) Nee doe toch maar niet....");
+            int input = scanner.nextInt();
+            if (input == 1) {
+                return true;
+            }if(input == 0){
+                return false;
+            }else{
+                System.out.println("Kies een geldige optie");
+                App.pauseMenu(scanner);
+                App.clearScreen();
+            }
+        }
+    }
+
+    public static String kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
+        String taak;
+        App.clearScreen();
+        while (true) {
+            System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
+                                "Kies een taak:");
+            int teller = 1;
+            for (Taken lijst : taken) {
+                System.out.println(teller + ") " + lijst.getTaak());
+                teller++;
+            }
+
+            int input = scanner.nextInt();
+            if (input > 0 && input <= taken.size()) {
+                taak = taken.get(input - 1).getTaak();                
+                return taak;
+            } else {
+                System.out.println("Kies een optie hier boven gegeven.");
+                App.pauseMenu(scanner);
+                App.clearScreen();
+            }
         }
     }
 
