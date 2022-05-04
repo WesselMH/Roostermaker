@@ -13,10 +13,6 @@ class TestScanner implements IScanner{
     public void setString(String x){
         this.stringValue = x;
     }
-
-    public void setDouble(Double x){
-        this.doubleValue = x;
-    }
   
     @Override
     public int nextInt() {
