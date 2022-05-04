@@ -20,7 +20,7 @@ public class Gezin {
         return this.naam;
     }
 
-    public double getBeschikbareTijd() {
+    public int getBeschikbareTijd() {
         return this.beschikbareTijd;
     }
 
