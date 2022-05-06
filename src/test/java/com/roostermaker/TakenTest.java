@@ -8,10 +8,10 @@ public class TakenTest {
     private TestScanner testScanner;
 
     @Test
-    public void testMaaknieuweTaak(){
-        new Taken("opruimen", 10);
-        testScanner.setString("opruimen");
-        // assertEquals(10, Taken.maakNieuweTaak(testScanner);
+    public void testNieuweTaak(){
+        int aantalTaken = Taken.taken.size();
+        Taken.taken.add(new Taken("Handen wassen", 1));
+        assertEquals(aantalTaken + 1, Taken.taken.size());
 
     }
 }
