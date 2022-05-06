@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class TakenTest {
-    private TestScanner testScanner;
 
     @Test
     public void testNieuweTaak(){
