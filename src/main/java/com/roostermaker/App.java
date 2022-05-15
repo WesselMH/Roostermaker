@@ -55,9 +55,10 @@ public class App
                         Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
-                    case ("5"):
-                        clearScreen();
-                        Gezin.maakNieuwGezinslid(scanner);
+                    // case ("5"):
+                    //     clearScreen();
+                    //     Gezin.maakNieuwGezinslid(scanner);
+                    //     break;
                     case ("0"):
                         break mainMenu;
                     default:
