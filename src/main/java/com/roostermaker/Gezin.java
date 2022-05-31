@@ -2,7 +2,7 @@ package com.roostermaker;
 
 import java.util.ArrayList;
 
-public class Gezin {
+public abstract class Gezin {
     protected String naam;
     protected int beschikbareTijd;
     protected String gezinverhouding;
@@ -14,6 +14,7 @@ public class Gezin {
         this.naam = naam;
         this.beschikbareTijd = beschikbareTijd;
         this.gezinverhouding = gezinverhouding;
+        gezin.add(this);
     }
 
     public String getNaam() {
@@ -79,15 +80,38 @@ public class Gezin {
                 gezinslid = gezin.get(input - 1).getNaam();
                 return gezinslid;
             } else {
-                System.out.println("Kies een optie hier boven gegeven.");
-                App.pauseMenu(scanner);
-                App.clearScreen();
+                App.foutMelding(scanner);
             }
         }
     }
 
     public static void maakNieuwGezinslid(IScanner scanner) {
-        System.out.println("hier wordt een gezinslid gemaakt");
+        System.out.println("Wat voor gezinslid wilt u aanmaken?" + "\n" +
+                            "1) Een kind" + "\n" + 
+                            "2) Een ouder");
+        String keuze = scanner.nextLine();
+                            
+        if(keuze.equals("1") || keuze.equals("2")){
+            String verhouding = bepaalVerhouding(keuze);
+            bepalenGegevens(scanner, verhouding);
+        }
+        else {
+            App.foutMelding(scanner);
+        }
+    }    
+
+    public static void bepalenGegevens(IScanner scanner, String verhouding){
+        System.out.println("Wat is de naam?");
+        String naam = scanner.nextLine();
+        System.out.println("Hoe veel uur is de beschikbaarheid per week?");
+        int beschikbaar = scanner.nextInt();
+        
+        if(verhouding.equals("Kind")){
+            new Kind(naam, beschikbaar);
+        }
+        else if(verhouding.equals("Ouder")){
+            new Ouder(naam, beschikbaar);
+        }
     }
 
     public static String bepaalVerhouding(String input) {

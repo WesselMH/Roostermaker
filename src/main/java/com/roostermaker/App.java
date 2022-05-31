@@ -8,16 +8,16 @@ public class App
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
 
-        Gezin.gezin.add(new Kind("Wessel", 240, Gezin.bepaalVerhouding("1")));
-        Gezin.gezin.add(new Kind("Jasmijn", 270, "Kind"));
-        Gezin.gezin.add(new Ouder("Gert-jan", 240, "Ouder"));
+        new Kind("Wessel", 240);
+        new Kind("Jasmijn", 270);
+        new Ouder("Gert-jan", 240);
         
         Taken.taken.add(new Taken("Afwassen", 15));
         Taken.taken.add(new Taken("Stofzuigen", 60));
         Taken.taken.add(new Taken("Was op hangen", 30));
 
 
-        // //TODO
+        //TODO
         // Gezin placeHolder = new Gezin("Mérei", 10, "Almachtige");
         
         mainMenu(scanner);       
@@ -31,6 +31,7 @@ public class App
                 "2) Print alle taken" + "\n" +
                 "3) Nieuwe taak maken" + "\n" +
                 "4) Selecteer een taak" + "\n" +
+                "5) Nieuw gezinslid maken" + "\n" +
                 "0) Stop programma"
                 );
             try {
@@ -55,10 +56,10 @@ public class App
                         Taken.taakSelecteren(scanner);
                         pauseMenu(scanner);
                         break;
-                    // case ("5"):
-                    //     clearScreen();
-                    //     Gezin.maakNieuwGezinslid(scanner);
-                    //     break;
+                    case ("5"):
+                        clearScreen();
+                        Gezin.maakNieuwGezinslid(scanner);
+                        break;
                     case ("0"):
                         break mainMenu;
                     default:
@@ -94,6 +95,12 @@ public class App
                 Runtime.getRuntime().exec("clear");
         } 
         catch (Exception e) {}
-      }
+    }
+
+    public static void foutMelding(IScanner scanner){
+        System.out.println("Kies een optie hier boven gegeven.");
+        App.pauseMenu(scanner);
+        App.clearScreen();
+    }
 }
     
