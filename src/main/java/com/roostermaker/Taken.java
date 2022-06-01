@@ -90,9 +90,7 @@ public class Taken {
                 taak = taken.get(input - 1).getTaak();                
                 return taak;
             } else {
-                System.out.println("Kies een optie hier boven gegeven.");
-                App.pauseMenu(scanner);
-                App.clearScreen();
+                App.foutMelding(scanner);
             }
         }
     }
