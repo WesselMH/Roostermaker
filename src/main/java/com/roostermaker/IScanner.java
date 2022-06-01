@@ -9,6 +9,8 @@ public interface IScanner {
    * <p>   Stored ints can be changed by using the method {@code setInt()} on a valid object.
    */
   int nextInt();
+
+  Integer nextInteger();
   /**Implementation of {@code nextLine()} in our scanner classes.
    * <p>Depending on the object implementing this method, it can either
    * <p>A) Act like a normal scanner and Read the current line until \n is encounterd then skip to the next line.
