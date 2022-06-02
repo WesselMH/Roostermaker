@@ -35,33 +35,30 @@ public abstract class Gezin {
 
     public static void printGezin() {
         System.out.println("Alle gezinsleden: ");
-        // for (Gezin printGezin : gezin) {
         for (int i = 0; i < gezin.size(); i++) {
             System.out.println("-" + gezin.get(i).getNaam() +
                     "(" + gezin.get(i).getGezinverhouding() + ")");
-            // int gezinIndex = i;
-//moet uitzoeken hoe ik dit doe
-            // for (String gezinslid : Taken.taken.get(i).getTaak()) {
-
-
-            //     if (gezinslid.equals(gezin.get(i).getNaam())) {
-            //         if (Taken.gekozenTaken.size() == 1) {
-            //             System.out.print("      *Gekozen taak: ");
-            //             System.out.println(Taken.gekozenTaken.get(0).getTaak());
-            //             break;
-            //         } else {
-            //             System.out.print("      *Gekozen taken: ");
-            //             for (int j = 0; j < Taken.gekozenTaken.size(); j++) {
-            //                 System.out.print(Taken.gekozenTaken.get(j).getTaak());
-            //                 if (j < (Taken.gekozenTaken.size() - 1)) {
-            //                     System.out.print(", ");
-            //                 }
-            //             }
-            //             System.out.println();
-            //             break;
-            //         }
-            //     }
-            // }
+            printTaakSelectie(i);
+        }
+    }
+    
+    public static void printTaakSelectie(int i){
+        int gezinIndex = 0;
+        for (String gezinslid : gekozenGezinslid) {
+            if (gezinslid.equals(gezin.get(i).getNaam()) && gezinIndex == 0) {
+                for (int j = 0; j < Taken.gekozenTaken.size(); j++) {
+                    if (gezin.get(i).getNaam().equals(gekozenGezinslid.get(j))) {
+                        if (gezinIndex == 0) {
+                            System.out.print("      *Gekozen taak/taken: ");
+                            System.out.print(Taken.gekozenTaken.get(j).getTaak());
+                            gezinIndex++;
+                        } else {
+                            System.out.print(", " + Taken.gekozenTaken.get(j).getTaak());
+                        }
+                    }
+                }
+                System.out.println();
+            }
         }
     }
 

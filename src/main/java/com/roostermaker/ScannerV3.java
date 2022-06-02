@@ -22,5 +22,17 @@ public class ScannerV3 implements IScanner{
     @Override
     public String nextLine() {
         return scanner.nextLine();
+    }
+
+    @Override
+    public Integer nextInteger() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } 
+            catch (NumberFormatException e) {
+                System.out.println("Voer enkel cijfers in.");
+            }
+        }
     }    
 }
