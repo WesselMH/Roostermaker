@@ -75,7 +75,7 @@ public class Taken {
     }
 
     public static Integer kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
-        String taak;
+        // String taak;
         App.clearScreen();
         while (true) {
             System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
@@ -88,7 +88,7 @@ public class Taken {
 
             Integer input = scanner.nextInteger();
             if (input > 0 && input <= taken.size()) {
-                taak = taken.get(input - 1).getTaak();                
+                // taak = taken.get(input - 1).getTaak();                
                 return input - 1;
             } else {
                 App.foutMelding(scanner);
