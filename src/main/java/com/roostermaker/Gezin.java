@@ -41,6 +41,7 @@ public abstract class Gezin {
             printTaakSelectie(i);
         }
     }
+    
     public static void printTaakSelectie(int i){
         int gezinIndex = 0;
         for (String gezinslid : gekozenGezinslid) {
