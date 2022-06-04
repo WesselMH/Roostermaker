@@ -24,10 +24,6 @@ public class Taken {
         return tijdDuur;
     }
 
-    public ArrayList<Taken> getTaken(){
-        return gekozenTaken;
-    }
-
     public static void maakNieuweTaak(IScanner scanner){
         String nieuweTaak = chechTaak(scanner);
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
@@ -64,11 +60,9 @@ public class Taken {
                                 "1) Ja zeker!!" + "\n" +
                                 "0) Nee doe toch maar niet....");
             int input = scanner.nextInt();
-            if (input == 1) {
-                return true;
-            }if(input == 0){
-                return false;
-            }else{
+            if(input == 1){return true;} 
+            if(input == 0){return false;}
+            else{
                 System.out.println("Kies een geldige optie");
                 App.pauseMenu(scanner);
                 App.clearScreen();
@@ -86,13 +80,9 @@ public class Taken {
                 System.out.println(teller + ") " + lijst.getTaak());
                 teller++;
             }
-
             Integer input = scanner.nextInteger();
-            if (input > 0 && input <= taken.size()) {
-                return input - 1;
-            } else {
-                App.foutMelding(scanner);
-            }
+            if (input > 0 && input <= taken.size()) {return input - 1;}
+            else {App.foutMelding(scanner);}
         }
     }
 
@@ -112,9 +102,7 @@ public class Taken {
                     break;
                 }
             }
-            if (isNotFound) {
-                return input;
-            }
+            if (isNotFound) {return input;}
         }
     }    
 }

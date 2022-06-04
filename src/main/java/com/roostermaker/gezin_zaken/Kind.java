@@ -6,10 +6,4 @@ public class Kind extends Gezin {
         super(naam, beschikbareTijd, "Kind");
         System.out.println("Nieuw kind aangemaakt.");
     }
-    
-
-    
-
-    
-
 } 

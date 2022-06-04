@@ -108,14 +108,19 @@ public class App {
 
     private static void aanroepMenuKeuzes() {
         System.out.println(
-                "1) Print alle gezins leden" + "\n" + 
-                "2) Print alle taken" + "\n" +
-                "3) Nieuwe taak maken" + "\n" +
-                "4) Selecteer een taak" + "\n" +
-                "5) Nieuw gezinslid maken" + "\n" +
-                "6) Kiezen wanneer de taak wordt uitgevoerd" + "\n" +
-                "0) Stop programma"
-                );
+        "1) Print alle gezins leden" + "\n" +
+        "2) Print alle taken" + "\n" +
+        "3) Nieuwe taak maken" + "\n" +
+        "4) Selecteer een taak" + "\n" +
+        "5) Nieuw gezinslid maken" + "\n" +
+        "6) Kiezen wanneer de taak wordt uitgevoerd" + "\n" +
+        "0) Stop programma");
+    }
+    
+    public static void foutMelding(IScanner scanner){
+        System.out.println("Kies een optie hier boven gegeven.");
+        App.pauseMenu(scanner);
+        App.clearScreen();
     }
 
     //pauseMenu
@@ -137,12 +142,6 @@ public class App {
                 Runtime.getRuntime().exec("clear");
         } 
         catch (Exception e) {}
-    }
-
-    public static void foutMelding(IScanner scanner){
-        System.out.println("Kies een optie hier boven gegeven.");
-        App.pauseMenu(scanner);
-        App.clearScreen();
     }
 }
     

@@ -75,14 +75,11 @@ public abstract class Gezin {
                 System.out.println(teller + ") " + lijst.getNaam());
                 teller++;
             }
-
             int input = scanner.nextInt();
             if (input > 0 && input <= gezin.size()) {
                 gezinslid = gezin.get(input - 1).getNaam();
                 return gezinslid;
-            } else {
-                App.foutMelding(scanner);
-            }
+            } else {App.foutMelding(scanner);}
         }
     }
 
@@ -93,18 +90,14 @@ public abstract class Gezin {
                     "2) Een ouder" + "\n" +
                     "0) Exit");
             Integer keuze = scanner.nextInt();
-
             if (keuze > 0 && keuze < 3) {
                 String keuzeString = keuze.toString();
                 String verhouding = bepaalVerhouding(keuzeString);
                 bepalenGegevens(scanner, verhouding);
                 break;
             }
-            if (keuze == 0) {
-                break;
-            } else {
-                App.foutMelding(scanner);
-            }
+            if (keuze == 0) {break;}
+            else {App.foutMelding(scanner);}
         }
     }
 
@@ -112,28 +105,18 @@ public abstract class Gezin {
         System.out.println("Wat is de naam?");
         String naam = scanner.nextLine();
         System.out.println("Hoe veel uur is de beschikbaarheid per week?");
-        int beschikbaar = scanner.nextInt();
-        
+        int beschikbaar = scanner.nextInt();        
         if(verhouding.equals("Kind")){
-            new Kind(naam, beschikbaar);
-        }
+            new Kind(naam, beschikbaar);}
         else if(verhouding.equals("Ouder")){
-            new Ouder(naam, beschikbaar);
-        }
+            new Ouder(naam, beschikbaar);}
     }
 
     public static String bepaalVerhouding(String input) {
         switch (input) {
-            case ("1"):
-                input = "Kind";
-                break;
-            case ("2"):
-                input = "Volwassenen";
-                break;
-            default:
-                System.out.println("Kies een gegeven optie.");
-                break;
-        }
-        return input;
+            case ("1"): input = "Kind"; break;
+            case ("2"): input = "Volwassenen"; break;
+            default: System.out.println("Kies een gegeven optie."); break;
+        } return input;
     }
 }
