@@ -21,6 +21,10 @@ public class Taken {
         return tijdDuur;
     }
 
+    public ArrayList<Taken> getTaken(){
+        return gekozenTaken;
+    }
+
     public static void maakNieuweTaak(IScanner scanner){
         String nieuweTaak = chechTaak(scanner);
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
@@ -38,19 +42,16 @@ public class Taken {
 
     public static void taakSelecteren(IScanner scanner) {
         String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
-        String geselecteerdeTaak = kiesTaak(scanner, geselecteerdGezinslid);
+        Integer geselecteerdeTaakIndex = kiesTaak(scanner, geselecteerdGezinslid);
         selecteerLoop: while (true) {
-            for (Taken gekozen : taken) {
-                if (geselecteerdeTaak.equals(gekozen.getTaak())) {
-                    boolean bevestiging = bevestigingAanmaak(scanner);
-                    if (bevestiging) {
-                        gekozenTaken.add(new Taken(geselecteerdeTaak, gekozen.getTijdDuur()));
-                        Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
-                        break selecteerLoop;
-                    } else {
-                        break selecteerLoop;
-                    }
-                }
+            boolean bevestiging = bevestigingAanmaak(scanner);
+            if (bevestiging) {
+                gekozenTaken.add(taken.get(geselecteerdeTaakIndex));
+                Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
+                // System.out.println(gekozenTaken.get(0).getTaak());
+                break selecteerLoop;
+            } else {
+                break selecteerLoop;
             }
         }
     }
@@ -73,8 +74,8 @@ public class Taken {
         }
     }
 
-    public static String kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
-        String taak;
+    public static Integer kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
+        // String taak;
         App.clearScreen();
         while (true) {
             System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
@@ -85,14 +86,12 @@ public class Taken {
                 teller++;
             }
 
-            int input = scanner.nextInt();
+            Integer input = scanner.nextInteger();
             if (input > 0 && input <= taken.size()) {
-                taak = taken.get(input - 1).getTaak();                
-                return taak;
+                // taak = taken.get(input - 1).getTaak();                
+                return input - 1;
             } else {
-                System.out.println("Kies een optie hier boven gegeven.");
-                App.pauseMenu(scanner);
-                App.clearScreen();
+                App.foutMelding(scanner);
             }
         }
     }

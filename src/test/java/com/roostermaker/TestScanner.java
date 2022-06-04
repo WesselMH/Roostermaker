@@ -5,6 +5,7 @@ class TestScanner implements IScanner{
     int intValue;
     String stringValue;
     Double doubleValue;
+    Integer IntegerValue;
   
     public void setInt(int x){
         this.intValue = x;
@@ -12,6 +13,10 @@ class TestScanner implements IScanner{
   
     public void setString(String x){
         this.stringValue = x;
+    }
+
+    public void setInteger(Integer x){
+        this.IntegerValue = x;
     }
   
     @Override
@@ -22,5 +27,10 @@ class TestScanner implements IScanner{
     @Override
     public String nextLine() {
         return stringValue;
+    }
+
+    @Override
+    public Integer nextInteger() {
+        return IntegerValue;
     }
   }
