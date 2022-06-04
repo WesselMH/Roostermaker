@@ -32,5 +32,7 @@ public abstract class Week {
     }
     
     public abstract String getDagVanWeek();
+
+    public abstract String getGekozenDagDeel();
     
 }

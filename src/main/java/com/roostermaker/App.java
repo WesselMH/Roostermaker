@@ -13,8 +13,7 @@ import com.roostermaker.week.Weekend;
  * Hello world!
  *
  */
-public class App 
-{
+public class App {
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
         seed();        

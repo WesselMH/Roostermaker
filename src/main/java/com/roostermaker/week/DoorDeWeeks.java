@@ -1,5 +1,6 @@
 package com.roostermaker.week;
 
+import com.roostermaker.App;
 import com.roostermaker.Scanner.ScannerV3;
 
 public class DoorDeWeeks extends Week{
@@ -11,28 +12,40 @@ public class DoorDeWeeks extends Week{
     
     @Override
     public String getDagVanWeek() {
-        System.out.println("Welke dag wil je een taak doen?" + "\n" +
-                "1) Maandag" + "\n" +
-                "2) Dinsdag" + "\n" +
-                "3) Woensdag" + "\n" +
-                "4) Donderdag" + "\n" +
-                "5) Vrijdag");
-        int keuze = scanner.nextInt();
-        if (keuze == 1) {
-            dag = "Maandag";
+        while (true) {
+            System.out.println("Welke dag wil je een taak doen?" + "\n" +
+                    "1) Maandag" + "\n" +
+                    "2) Dinsdag" + "\n" +
+                    "3) Woensdag" + "\n" +
+                    "4) Donderdag" + "\n" +
+                    "5) Vrijdag");
+            int keuze = scanner.nextInt();
+            if(keuze > 0 && keuze < 6){
+                if (keuze == 1) {
+                    return "Maandag";
+                }
+                if (keuze == 2) {
+                    return "Dinsdag";
+                }
+                if (keuze == 3) {
+                    return "Woensdag";
+                }
+                if (keuze == 4) {
+                    return "Donderdag";
+                }
+                if (keuze == 5) {
+                    return "Vrijdag";
+                }
+            }
+            else{
+                App.foutMelding(scanner);
+            }
         }
-        if (keuze == 2) {
-            dag = "Dinsdag";
-        }
-        if (keuze == 1) {
-            dag = "Woensdag";
-        }
-        if (keuze == 2) {
-            dag = "Donderdag";
-        }
-        if (keuze == 1) {
-            dag = "Vrijdag";
-        }
-        return dag;
+    }
+
+    @Override
+    public String getGekozenDagDeel() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

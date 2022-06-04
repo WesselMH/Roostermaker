@@ -1,5 +1,6 @@
 package com.roostermaker.week;
 
+import com.roostermaker.App;
 import com.roostermaker.Scanner.ScannerV3;
 
 public class Weekend extends Week{
@@ -11,21 +12,32 @@ public class Weekend extends Week{
     
     @Override
     public String getDagVanWeek() {
-        System.out.println("Welke dag wil je een taak doen?" + "\n" +
-                "1) Zaterdag" + "\n" +
-                "2) Zondag");
-        int keuze = scanner.nextInt();
-        if (keuze == 1) {
-            dag = "Zaterdag";
+        while (true) {
+            System.out.println("Welke dag wil je een taak doen?" + "\n" +
+                    "1) Zaterdag" + "\n" +
+                    "2) Zondag");
+            int keuze = scanner.nextInt();
+            if (keuze > 0 && keuze < 3) {
+                if (keuze == 1) {
+                    return "Zaterdag";
+                }
+                if (keuze == 2) {
+                    return "Zondag";
+                }
+            } else {
+                App.foutMelding(scanner);
+            }
         }
-        if (keuze == 2) {
-            dag = "Zondag";
-        }
-        return dag;
     }
 
     public String getDagdeel(){
         return dagdeel;
+    }
+
+    @Override
+    public String getGekozenDagDeel() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     
