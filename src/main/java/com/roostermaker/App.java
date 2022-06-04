@@ -26,14 +26,7 @@ public class App
     public static void mainMenu(IScanner scanner){
         mainMenu: while (true){
             clearScreen();
-            System.out.println(
-                "1) Print alle gezins leden" + "\n" + 
-                "2) Print alle taken" + "\n" +
-                "3) Nieuwe taak maken" + "\n" +
-                "4) Selecteer een taak" + "\n" +
-                "5) Nieuw gezinslid maken" + "\n" +
-                "0) Stop programma"
-                );
+            aanroepMenuKeuzes();
             try {
                 switch (scanner.nextLine()){
                     case ("1"):
@@ -74,6 +67,21 @@ public class App
                 pauseMenu(scanner);
             }
         }        
+    }
+
+    private static void aanroepMenuKeuzes() {
+        System.out.println(
+                "1) Print alle gezins leden" + "\n" + 
+                "2) Print alle taken" + "\n" +
+                "3) Nieuwe taak maken" + "\n" +
+                "4) Selecteer een taak" + "\n" +
+                "5) Nieuw gezinslid maken" + "\n" +
+                "0) Stop programma"
+                );
+    }
+
+    public static void menuKeuzes(){
+
     }
 
     //pauseMenu
