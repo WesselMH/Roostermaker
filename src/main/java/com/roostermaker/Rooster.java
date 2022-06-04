@@ -8,10 +8,18 @@ public class Rooster {
     private static int scanDag;
     private static String dagdeel;
     private static int scanDagdeel;
+    private static int dagteller = 0;
 
     
     public static void roosterInvullen(IScanner scanner){
-        dagKeuze(scanner);
+        dag = dagKeuze(scanner);
+        System.out.println("Welk dag deel wil je inplannen?");
+        for (int i = 0; i < Week.week.size() -1; i++) {
+            if(Week.week.get(i).getDag().equals(dag)){
+                System.out.println(dagteller + 1 + ") " + Week.week.get(i).getDagdeel());
+                dagteller++;
+            }            
+        }
         scanDagdeel = scanner.nextInt();
         
         dagdeel = dagdeelKeuze(scanDagdeel);
