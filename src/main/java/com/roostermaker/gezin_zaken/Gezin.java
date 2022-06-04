@@ -87,19 +87,26 @@ public abstract class Gezin {
     }
 
     public static void maakNieuwGezinslid(IScanner scanner) {
-        System.out.println("Wat voor gezinslid wilt u aanmaken?" + "\n" +
-                            "1) Een kind" + "\n" + 
-                            "2) Een ouder");
-        String keuze = scanner.nextLine();
-                            
-        if(keuze.equals("1") || keuze.equals("2")){
-            String verhouding = bepaalVerhouding(keuze);
-            bepalenGegevens(scanner, verhouding);
+        while (true) {
+            System.out.println("Wat voor gezinslid wilt u aanmaken?" + "\n" +
+                    "1) Een kind" + "\n" +
+                    "2) Een ouder" + "\n" +
+                    "0) Exit");
+            Integer keuze = scanner.nextInt();
+
+            if (keuze > 0 && keuze < 3) {
+                String keuzeString = keuze.toString();
+                String verhouding = bepaalVerhouding(keuzeString);
+                bepalenGegevens(scanner, verhouding);
+                break;
+            }
+            if (keuze == 0) {
+                break;
+            } else {
+                App.foutMelding(scanner);
+            }
         }
-        else {
-            App.foutMelding(scanner);
-        }
-    }    
+    }
 
     public static void bepalenGegevens(IScanner scanner, String verhouding){
         System.out.println("Wat is de naam?");
