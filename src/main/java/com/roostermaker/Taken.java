@@ -2,6 +2,9 @@ package com.roostermaker;
 
 import java.util.ArrayList;
 
+import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.gezin_zaken.Gezin;
+
 public class Taken {
     private String taak;
     private int tijdDuur;
@@ -48,7 +51,6 @@ public class Taken {
             if (bevestiging) {
                 gekozenTaken.add(taken.get(geselecteerdeTaakIndex));
                 Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
-                // System.out.println(gekozenTaken.get(0).getTaak());
                 break selecteerLoop;
             } else {
                 break selecteerLoop;
@@ -75,7 +77,6 @@ public class Taken {
     }
 
     public static Integer kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
-        // String taak;
         App.clearScreen();
         while (true) {
             System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
@@ -88,7 +89,6 @@ public class Taken {
 
             Integer input = scanner.nextInteger();
             if (input > 0 && input <= taken.size()) {
-                // taak = taken.get(input - 1).getTaak();                
                 return input - 1;
             } else {
                 App.foutMelding(scanner);

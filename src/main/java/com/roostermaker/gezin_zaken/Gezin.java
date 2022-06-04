@@ -1,6 +1,10 @@
-package com.roostermaker;
+package com.roostermaker.gezin_zaken;
 
 import java.util.ArrayList;
+
+import com.roostermaker.App;
+import com.roostermaker.Taken;
+import com.roostermaker.Scanner.IScanner;
 
 public abstract class Gezin {
     protected String naam;

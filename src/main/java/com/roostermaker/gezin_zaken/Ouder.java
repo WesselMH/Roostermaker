@@ -1,4 +1,5 @@
-package com.roostermaker;
+package com.roostermaker.gezin_zaken;
+
 
 public class Ouder extends Gezin {
     

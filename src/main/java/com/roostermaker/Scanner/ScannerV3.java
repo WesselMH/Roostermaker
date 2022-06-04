@@ -1,4 +1,4 @@
-package com.roostermaker;
+package com.roostermaker.Scanner;
 
 import java.util.Scanner;
 
