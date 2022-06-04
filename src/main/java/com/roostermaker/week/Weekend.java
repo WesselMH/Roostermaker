@@ -20,8 +20,7 @@ public class Weekend extends Week{
             if (keuze > 0 && keuze < 3) {
                 if (keuze == 1) {
                     return "Zaterdag";
-                }
-                if (keuze == 2) {
+                }else {
                     return "Zondag";
                 }
             } else {
@@ -36,9 +35,24 @@ public class Weekend extends Week{
 
     @Override
     public String getGekozenDagDeel() {
-        // TODO Auto-generated method stub
-        return null;
+        while (true) {
+            System.out.println("Welk dag deel wil je inplannen?" + "\n" +
+                    "1) Middag" + "\n" +
+                    "2) Avond");
+            int keuze = scanner.nextInt();
+            if (keuze > 0 && keuze < 3) {
+                if (keuze == 1) {
+                    dagdeel = "middag";
+                } else {
+                    dagdeel = "avond";
+                }
+                break;
+            } else {
+                App.foutMelding(scanner);
+            }
+        }
+        App.clearScreen();
+        return dagdeel;
     }
 
-    
 }

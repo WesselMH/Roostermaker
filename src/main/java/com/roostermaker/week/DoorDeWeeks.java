@@ -45,7 +45,27 @@ public class DoorDeWeeks extends Week{
 
     @Override
     public String getGekozenDagDeel() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        while (true) {
+            System.out.println("Welk dag deel wil je inplannen?" + "\n" +
+                    "1) Ochtend" + "\n" +
+                    "2) Middag" + "\n" +
+                    "3) Avond");
+            int keuze = scanner.nextInt();
+            if (keuze > 0 && keuze < 4) {
+                if (keuze == 1) {
+                    dagdeel = "ochtend";
+                } else if (keuze == 2) {
+                    dagdeel = "middag";
+                } else {
+                    dagdeel = "avond";
+                }
+                break;
+            } else {
+                App.foutMelding(scanner);
+            }
+        }
+        App.clearScreen();
+        return dagdeel;
+    };
+
 }
