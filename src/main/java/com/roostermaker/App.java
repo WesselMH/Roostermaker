@@ -5,6 +5,9 @@ import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.gezin_zaken.Gezin;
 import com.roostermaker.gezin_zaken.Kind;
 import com.roostermaker.gezin_zaken.Ouder;
+import com.roostermaker.week.DoorDeWeeks;
+import com.roostermaker.week.Week;
+import com.roostermaker.week.Weekend;
 
 /**
  * Hello world!
@@ -14,7 +17,11 @@ public class App
 {
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
+        seed();        
+        mainMenu(scanner);       
+    }
 
+    private static void seed() {
         new Kind("Wessel", 240);
         new Kind("Jasmijn", 270);
         new Ouder("Gert-jan", 240);
@@ -23,11 +30,26 @@ public class App
         Taken.taken.add(new Taken("Stofzuigen", 60));
         Taken.taken.add(new Taken("Was op hangen", 30));
 
-
-        //TODO
-        // Gezin placeHolder = new Gezin("Mérei", 10, "Almachtige");
+        String dagdeel = "";
+        for (int i = 0; i < 3; i++) {
+            if(i == 0){
+                dagdeel = "ochtend";
+            }
+            if(i == 1){
+                dagdeel = "middag";
+            }
+            if(i == 2){
+                dagdeel = "avond";
+            }
+            Week.week.add(new DoorDeWeeks("Maandag", dagdeel));
+            Week.week.add(new DoorDeWeeks("Dinsdag", dagdeel));
+            Week.week.add(new DoorDeWeeks("Woensdag", dagdeel));
+            Week.week.add(new DoorDeWeeks("Donderdag", dagdeel));
+            Week.week.add(new DoorDeWeeks("Vrijdag", dagdeel));
+            Week.week.add(new Weekend("Zaterdag", dagdeel));
+            Week.week.add(new Weekend("Zondag", dagdeel));
+        }
         
-        mainMenu(scanner);       
     }
 
     public static void mainMenu(IScanner scanner){
@@ -60,6 +82,10 @@ public class App
                         clearScreen();
                         Gezin.maakNieuwGezinslid(scanner);
                         break;
+                    case ("6"):
+                        clearScreen();
+                        Rooster.roosterInvullen(scanner);
+                        break;
                     case ("0"):
                         break mainMenu;
                     default:
@@ -83,12 +109,9 @@ public class App
                 "3) Nieuwe taak maken" + "\n" +
                 "4) Selecteer een taak" + "\n" +
                 "5) Nieuw gezinslid maken" + "\n" +
+                "6) Kiezen wanneer de taak wordt uitgevoerd" + "\n" +
                 "0) Stop programma"
                 );
-    }
-
-    public static void menuKeuzes(){
-
     }
 
     //pauseMenu
