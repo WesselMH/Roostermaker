@@ -7,7 +7,4 @@ public class Ouder extends Gezin {
         super(naam, beschikbareTijd, "Ouder");
         System.out.println("Nieuwe ouder aangemaakt.");
     }
-
-
-   
 }
