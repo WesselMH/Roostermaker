@@ -2,6 +2,9 @@ package com.roostermaker;
 
 import java.util.ArrayList;
 
+import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.gezin_zaken.Gezin;
+
 public class Taken {
     private String taak;
     private int tijdDuur;

@@ -1,4 +1,4 @@
-package com.roostermaker;
+package com.roostermaker.Scanner;
 
 public interface IScanner {
   /**Implementation of {@code nextInt()} in our scanner classes.

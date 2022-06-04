@@ -1,4 +1,5 @@
-package com.roostermaker;
+package com.roostermaker.gezin_zaken;
+
 public class Kind extends Gezin {
 
     public Kind(String naam, int beschikbareTijd) {

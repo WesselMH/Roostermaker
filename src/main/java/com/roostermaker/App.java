@@ -1,4 +1,11 @@
 package com.roostermaker;
+
+import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.Scanner.ScannerV3;
+import com.roostermaker.gezin_zaken.Gezin;
+import com.roostermaker.gezin_zaken.Kind;
+import com.roostermaker.gezin_zaken.Ouder;
+
 /**
  * Hello world!
  *

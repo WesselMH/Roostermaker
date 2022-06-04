@@ -1,5 +1,7 @@
 package com.roostermaker;
 
+import com.roostermaker.Scanner.IScanner;
+
 class TestScanner implements IScanner{
 
     int intValue;
