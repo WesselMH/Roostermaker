@@ -1,6 +1,5 @@
 package com.roostermaker;
 
-import javax.swing.Painter;
 
 import com.roostermaker.Scanner.IScanner;
 import com.roostermaker.Scanner.ScannerV3;
@@ -11,10 +10,6 @@ import com.roostermaker.week.DoorDeWeeks;
 import com.roostermaker.week.Week;
 import com.roostermaker.week.Weekend;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main( String[] args ){
         ScannerV3 scanner = new ScannerV3();
@@ -77,7 +72,7 @@ public class App {
 
     private static void case1PrintGezin(IScanner scanner) {
         clearScreen();
-        Gezin.printGezin();
+        Printer.printGezin();
         pauseMenu(scanner);
     }
     private static void case2PrintTaken(IScanner scanner) {
@@ -136,12 +131,11 @@ public class App {
 
     public static void clearScreen() {
         try{
-            if (System.getProperty("os.name").contains("Windows"))
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
-                Runtime.getRuntime().exec("clear");
-        } 
-        catch (Exception e) {}
+            if (System.getProperty("os.name").contains("Windows")){
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();}
+            else{
+                Runtime.getRuntime().exec("clear");}
+        }catch (Exception e) {}
     }
 }
     

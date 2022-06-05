@@ -3,7 +3,6 @@ package com.roostermaker.gezin_zaken;
 import java.util.ArrayList;
 
 import com.roostermaker.App;
-import com.roostermaker.Taken;
 import com.roostermaker.Scanner.IScanner;
 
 public abstract class Gezin {
@@ -35,35 +34,6 @@ public abstract class Gezin {
 
     public String getGezinverhouding() {
         return gezinverhouding;
-    }
-
-    public static void printGezin() {
-        System.out.println("Alle gezinsleden: ");
-        for (int i = 0; i < gezin.size(); i++) {
-            System.out.println("-" + gezin.get(i).getNaam() +
-                    "(" + gezin.get(i).getGezinverhouding() + ")");
-            printTaakSelectie(i);
-        }
-    }
-    
-    public static void printTaakSelectie(int i){
-        int gezinIndex = 0;
-        for (String gezinslid : gekozenGezinslid) {
-            if (gezinslid.equals(gezin.get(i).getNaam()) && gezinIndex == 0) {
-                for (int j = 0; j < Taken.gekozenTaken.size(); j++) {
-                    if (gezin.get(i).getNaam().equals(gekozenGezinslid.get(j))) {
-                        if (gezinIndex == 0) {
-                            System.out.print("      *Gekozen taak/taken: ");
-                            System.out.print(Taken.gekozenTaken.get(j).getTaak());
-                            gezinIndex++;
-                        } else {
-                            System.out.print(", " + Taken.gekozenTaken.get(j).getTaak());
-                        }
-                    }
-                }
-                System.out.println();
-            }
-        }
     }
 
     public static String kiesGezinslid(IScanner scanner) {
