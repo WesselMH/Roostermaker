@@ -31,9 +31,7 @@ public class Rooster {
                 }
                 dagVanDWeek = Week.week.get(scanDag);
                 break;
-            } else {
-                App.foutMelding(scanner);
-            }
+            } else {App.foutMelding(scanner);}
         }
         App.clearScreen();
         return dagVanDWeek;
