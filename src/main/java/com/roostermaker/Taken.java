@@ -2,7 +2,7 @@ package com.roostermaker;
 
 import java.util.ArrayList;
 
-import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.gezin_zaken.Gezin;
 
 public class Taken {
@@ -24,8 +24,9 @@ public class Taken {
         return tijdDuur;
     }
 
-    public static void maakNieuweTaak(IScanner scanner){
-        String nieuweTaak = chechTaak(scanner);
+    public static void maakNieuweTaak(){
+        ScannerV3 scanner = new ScannerV3();
+        String nieuweTaak = chechTaak();
         System.out.println("Voer de tijdsduur van de taak in (minuten): ");
         int nieuweTijdDuur = scanner.nextInt();
         taken.add(new Taken(nieuweTaak, nieuweTijdDuur));
@@ -39,11 +40,11 @@ public class Taken {
         }
     }
 
-    public static void taakSelecteren(IScanner scanner) {
-        String geselecteerdGezinslid = Gezin.kiesGezinslid(scanner);
-        Integer geselecteerdeTaakIndex = kiesTaak(scanner, geselecteerdGezinslid);
+    public static void taakSelecteren() {
+        String geselecteerdGezinslid = Gezin.kiesGezinslid();
+        Integer geselecteerdeTaakIndex = kiesTaak(geselecteerdGezinslid);
         selecteerLoop: while (true) {
-            boolean bevestiging = bevestigingAanmaak(scanner);
+            boolean bevestiging = bevestigingAanmaak();
             if (bevestiging) {
                 gekozenTaken.add(taken.get(geselecteerdeTaakIndex));
                 Gezin.gekozenGezinslid.add(geselecteerdGezinslid);
@@ -54,7 +55,8 @@ public class Taken {
         }
     }
 
-    private static boolean bevestigingAanmaak(IScanner scanner) {
+    private static boolean bevestigingAanmaak() {
+        ScannerV3 scanner = new ScannerV3();
         while (true) {
             System.out.println("Weet je het zeker?" + "\n" +
                                 "1) Ja zeker!!" + "\n" +
@@ -64,13 +66,14 @@ public class Taken {
             if(input == 0){return false;}
             else{
                 System.out.println("Kies een geldige optie");
-                App.pauseMenu(scanner);
+                App.pauseMenu();
                 App.clearScreen();
             }
         }
     }
 
-    public static Integer kiesTaak(IScanner scanner, String geselecteerdGezinslid) {
+    public static Integer kiesTaak(String geselecteerdGezinslid) {
+        ScannerV3 scanner = new ScannerV3();
         App.clearScreen();
         while (true) {
             System.out.println("Geselecteerd gezinslid: "+ geselecteerdGezinslid + "\n" +
@@ -82,11 +85,12 @@ public class Taken {
             }
             Integer input = scanner.nextInteger();
             if (input > 0 && input <= taken.size()) {return input - 1;}
-            else {App.foutMelding(scanner);}
+            else {App.foutMelding();}
         }
     }
 
-    public static String chechTaak(IScanner scanner) {
+    public static String chechTaak() {
+        ScannerV3 scanner = new ScannerV3();
         while (true) {
             Boolean isNotFound = false;
             System.out.println("Voer de naam van de taak in: ");
@@ -94,7 +98,7 @@ public class Taken {
             for (Taken taak : taken) {
                 if (taak.getTaak().equals(input)) {
                     System.out.println("Sorry deze taak bestaat al.");
-                    App.pauseMenu(scanner);
+                    App.pauseMenu();
                     App.clearScreen();
                     break;
                 }else{

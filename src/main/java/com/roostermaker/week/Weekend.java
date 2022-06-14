@@ -20,7 +20,7 @@ public class Weekend extends Week{
             if (keuze > 0 && keuze < 3) {
                 dag = DoorDeWeeks.getWeek().get(keuze + 4).getDag();
                 return dag;
-            } else {App.foutMelding(scanner);}
+            } else {App.foutMelding();}
         }
     }
 
@@ -38,7 +38,7 @@ public class Weekend extends Week{
             if (keuze > 0 && keuze < 3) {
                 dagdeel = DoorDeWeeks.getWeek().get(keuze).getDagdeel();
                 break;
-            } else {App.foutMelding(scanner);
+            } else {App.foutMelding();
             }
         }App.clearScreen(); return dagdeel;
     }

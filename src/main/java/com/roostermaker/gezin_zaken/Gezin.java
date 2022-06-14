@@ -3,7 +3,7 @@ package com.roostermaker.gezin_zaken;
 import java.util.ArrayList;
 
 import com.roostermaker.App;
-import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.Scanner.ScannerV3;
 
 public abstract class Gezin {
     protected String naam;
@@ -36,7 +36,8 @@ public abstract class Gezin {
         return gezinverhouding;
     }
 
-    public static String kiesGezinslid(IScanner scanner) {
+    public static String kiesGezinslid() {
+        ScannerV3 scanner = new ScannerV3();
         String gezinslid;
         while (true) {
             System.out.println("Kies een gezinslid:");
@@ -49,11 +50,12 @@ public abstract class Gezin {
             if (input > 0 && input <= gezin.size()) {
                 gezinslid = gezin.get(input - 1).getNaam();
                 return gezinslid;
-            } else {App.foutMelding(scanner);}
+            } else {App.foutMelding();}
         }
     }
 
-    public static void maakNieuwGezinslid(IScanner scanner) {
+    public static void maakNieuwGezinslid() {
+        ScannerV3 scanner = new ScannerV3();
         while (true) {
             System.out.println("Wat voor gezinslid wilt u aanmaken?" + "\n" +
                     "1) Een kind" + "\n" +
@@ -63,15 +65,16 @@ public abstract class Gezin {
             if (keuze > 0 && keuze < 3) {
                 String keuzeString = keuze.toString();
                 String verhouding = bepaalVerhouding(keuzeString);
-                bepalenGegevens(scanner, verhouding);
+                bepalenGegevens(verhouding);
                 break;
             }
             if (keuze == 0) {break;}
-            else {App.foutMelding(scanner);}
+            else {App.foutMelding();}
         }
     }
 
-    public static void bepalenGegevens(IScanner scanner, String verhouding){
+    public static void bepalenGegevens(String verhouding){
+        ScannerV3 scanner = new ScannerV3();
         System.out.println("Wat is de naam?");
         String naam = scanner.nextLine();
         System.out.println("Hoe veel uur is de beschikbaarheid per week?");

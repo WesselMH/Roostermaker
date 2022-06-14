@@ -1,8 +1,10 @@
 package com.roostermaker;
 
+import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.gezin_zaken.Gezin;
 
 public class Printer {
+    ScannerV3 scanner = new ScannerV3();
 
     public static void printGezin() {
         System.out.println("Alle gezinsleden: ");

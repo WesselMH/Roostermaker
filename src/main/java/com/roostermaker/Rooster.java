@@ -1,6 +1,6 @@
 package com.roostermaker;
 
-import com.roostermaker.Scanner.IScanner;
+import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.week.Week;
 
 public class Rooster {
@@ -10,8 +10,8 @@ public class Rooster {
     private static Week dagVanDWeek;
 
     
-    public static void roosterInvullen(IScanner scanner){
-        Week selectedDag = isWeekend(scanner);
+    public static void roosterInvullen(){
+        Week selectedDag = isWeekend();
         dag = selectedDag.getDagVanWeek();
         App.clearScreen();
         dagdeel = selectedDag.getGekozenDagDeel();
@@ -19,7 +19,8 @@ public class Rooster {
         System.out.println();
     }
 
-    private static Week isWeekend(IScanner scanner) {
+    private static Week isWeekend() {
+        ScannerV3 scanner = new ScannerV3();
         while (true) {
             System.out.println("Wil je in het weekend of door de weeks?" + "\n" +
                     "1) Door de weeks" + "\n" +
@@ -31,7 +32,7 @@ public class Rooster {
                 }
                 dagVanDWeek = Week.week.get(scanDag);
                 break;
-            } else {App.foutMelding(scanner);}
+            } else {App.foutMelding();}
         }
         App.clearScreen();
         return dagVanDWeek;

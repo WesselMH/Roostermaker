@@ -1,7 +1,6 @@
 package com.roostermaker;
 
 
-import com.roostermaker.Scanner.IScanner;
 import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.gezin_zaken.Gezin;
 import com.roostermaker.gezin_zaken.Kind;
@@ -11,10 +10,10 @@ import com.roostermaker.week.Week;
 import com.roostermaker.week.Weekend;
 
 public class App {
-    public static void main( String[] args ){
-        ScannerV3 scanner = new ScannerV3();
+    ScannerV3 scanner = new ScannerV3();
+    public void main( String[] args ){
         seed();        
-        mainMenu(scanner);       
+        mainMenu();       
     }
 
     private static void seed() {
@@ -33,66 +32,66 @@ public class App {
         Week.week.add(new Weekend("Zondag", "Avond"));      
     }
 
-    public static void mainMenu(IScanner scanner){
+    public void mainMenu(){
         mainMenu: while (true){
             clearScreen();
             aanroepMenuKeuzes();
             try {
                 switch (scanner.nextLine()){
-                    case ("1"): case1PrintGezin(scanner); break;
-                    case ("2"): case2PrintTaken(scanner); break;
-                    case ("3"): case3MaakNieuweTaak(scanner); break;
-                    case ("4"): case4TaakSelecteren(scanner); break;
-                    case ("5"): case5MaakNieuweGezinslid(scanner); break;
-                    case ("6"): case6RoosterInvullen(scanner); break;
+                    case ("1"): case1PrintGezin(); break;
+                    case ("2"): case2PrintTaken(); break;
+                    case ("3"): case3MaakNieuweTaak(); break;
+                    case ("4"): case4TaakSelecteren(); break;
+                    case ("5"): case5MaakNieuweGezinslid(); break;
+                    case ("6"): case6RoosterInvullen(); break;
                     case ("0"): break mainMenu;
-                    default: caseDefault(scanner); break;
+                    default: caseDefault(); break;
                 }
             } catch (Exception e) {
                 System.out.println("Error in method mainMenu in class App");
                 System.out.println(e);
-                pauseMenu(scanner);
+                pauseMenu();
             }
         }        
     }
 
     
 
-    private static void caseDefault(IScanner scanner) {
+    private void caseDefault() {
         clearScreen();
         System.out.println("Voer geldige optie in.");
-        pauseMenu(scanner);
+        pauseMenu();
     }
 
-    private static void case1PrintGezin(IScanner scanner) {
+    private void case1PrintGezin() {
         clearScreen();
         Printer.printGezin();
-        pauseMenu(scanner);
+        pauseMenu();
     }
-    private static void case2PrintTaken(IScanner scanner) {
+    private void case2PrintTaken() {
         clearScreen();
         Taken.printTaken();
-        pauseMenu(scanner);
+        pauseMenu();
     }
-    private static void case3MaakNieuweTaak(IScanner scanner) {        
+    private void case3MaakNieuweTaak() {        
         clearScreen();
-        Taken.maakNieuweTaak(scanner);
-        pauseMenu(scanner);
+        Taken.maakNieuweTaak();
+        pauseMenu();
     }
-    private static void case4TaakSelecteren(IScanner scanner) {
+    private void case4TaakSelecteren() {
         clearScreen();
-        Taken.taakSelecteren(scanner);
-        pauseMenu(scanner);
+        Taken.taakSelecteren();
+        pauseMenu();
     }
-    private static void case5MaakNieuweGezinslid(IScanner scanner) {
+    private static void case5MaakNieuweGezinslid() {
         clearScreen();
-        Gezin.maakNieuwGezinslid(scanner);
-        pauseMenu(scanner);
+        Gezin.maakNieuwGezinslid();
+        pauseMenu();
     }
-    private static void case6RoosterInvullen(IScanner scanner) {
+    private static void case6RoosterInvullen() {
         clearScreen();
-        Rooster.roosterInvullen(scanner);
-        pauseMenu(scanner);
+        Rooster.roosterInvullen();
+        pauseMenu();
     }
 
     private static void aanroepMenuKeuzes() {
@@ -106,14 +105,15 @@ public class App {
         "0) Stop programma");
     }
     
-    public static void foutMelding(IScanner scanner){
+    public static void foutMelding(){
         System.out.println("Kies een optie hier boven gegeven.");
-        App.pauseMenu(scanner);
-        App.clearScreen();
+        pauseMenu();
+        clearScreen();
     }
 
     //pauseMenu
-    public static void pauseMenu(IScanner scanner) {
+    public static void pauseMenu() {
+        ScannerV3 scanner = new ScannerV3();
         System.out.println("Press return to continue.");
         try {
             scanner.nextLine(); // This is just here to wait for input
