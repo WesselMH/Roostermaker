@@ -10,8 +10,7 @@ import com.roostermaker.week.Week;
 import com.roostermaker.week.Weekend;
 
 public class App {
-    ScannerV3 scanner = new ScannerV3();
-    public void main( String[] args ){
+    public static void main( String[] args ){
         seed();        
         mainMenu();       
     }
@@ -32,7 +31,8 @@ public class App {
         Week.week.add(new Weekend("Zondag", "Avond"));      
     }
 
-    public void mainMenu(){
+    public static void mainMenu(){
+        ScannerV3 scanner = new ScannerV3();
         mainMenu: while (true){
             clearScreen();
             aanroepMenuKeuzes();
@@ -57,28 +57,28 @@ public class App {
 
     
 
-    private void caseDefault() {
+    private static void caseDefault() {
         clearScreen();
         System.out.println("Voer geldige optie in.");
         pauseMenu();
     }
 
-    private void case1PrintGezin() {
+    private static void case1PrintGezin() {
         clearScreen();
         Printer.printGezin();
         pauseMenu();
     }
-    private void case2PrintTaken() {
+    private static void case2PrintTaken() {
         clearScreen();
         Taken.printTaken();
         pauseMenu();
     }
-    private void case3MaakNieuweTaak() {        
+    private static void case3MaakNieuweTaak() {        
         clearScreen();
         Taken.maakNieuweTaak();
         pauseMenu();
     }
-    private void case4TaakSelecteren() {
+    private static void case4TaakSelecteren() {
         clearScreen();
         Taken.taakSelecteren();
         pauseMenu();
