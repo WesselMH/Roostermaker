@@ -15,8 +15,8 @@ public class Rooster {
         dag = selectedDag.getDagVanWeek();
         App.clearScreen();
         dagdeel = selectedDag.getGekozenDagDeel();
-        System.out.println(dag + " " + dagdeel);
-        scanner.nextLine();
+        System.out.println("Gekozen dag met dagdeel:" + "\n" + dag + " " + dagdeel);
+        System.out.println();
     }
 
     private static Week isWeekend(IScanner scanner) {

@@ -24,19 +24,13 @@ public class App {
         Taken.taken.add(new Taken("Afwassen", 15));
         Taken.taken.add(new Taken("Stofzuigen", 60));
         Taken.taken.add(new Taken("Was op hangen", 30));
-        String dagdeel = "";
-        for (int i = 0; i < 3; i++) {
-            if(i == 0){dagdeel = "ochtend";}
-            if(i == 1){dagdeel = "middag";}
-            if(i == 2){dagdeel = "avond";}
-            Week.week.add(new DoorDeWeeks("Maandag", dagdeel));
-            Week.week.add(new DoorDeWeeks("Dinsdag", dagdeel));
-            Week.week.add(new DoorDeWeeks("Woensdag", dagdeel));
-            Week.week.add(new DoorDeWeeks("Donderdag", dagdeel));
-            Week.week.add(new DoorDeWeeks("Vrijdag", dagdeel));
-            Week.week.add(new Weekend("Zaterdag", dagdeel));
-            Week.week.add(new Weekend("Zondag", dagdeel));
-        }        
+        Week.week.add(new DoorDeWeeks("Maandag", "Ochtend"));
+        Week.week.add(new DoorDeWeeks("Dinsdag", "Middag"));
+        Week.week.add(new DoorDeWeeks("Woensdag", "Avond"));
+        Week.week.add(new DoorDeWeeks("Donderdag", null));
+        Week.week.add(new DoorDeWeeks("Vrijdag", null));
+        Week.week.add(new Weekend("Zaterdag", "Middag"));
+        Week.week.add(new Weekend("Zondag", "Avond"));      
     }
 
     public static void mainMenu(IScanner scanner){

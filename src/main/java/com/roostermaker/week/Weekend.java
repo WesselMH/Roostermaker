@@ -18,8 +18,8 @@ public class Weekend extends Week{
                     "2) Zondag");
             int keuze = scanner.nextInt();
             if (keuze > 0 && keuze < 3) {
-                if (keuze == 1) {return "Zaterdag";
-                }else {return "Zondag";}
+                dag = DoorDeWeeks.getWeek().get(keuze + 4).getDag();
+                return dag;
             } else {App.foutMelding(scanner);}
         }
     }
@@ -36,9 +36,8 @@ public class Weekend extends Week{
                     "2) Avond");
             int keuze = scanner.nextInt();
             if (keuze > 0 && keuze < 3) {
-                if (keuze == 1) {dagdeel = "middag";
-                } else {dagdeel = "avond";
-                }break;
+                dagdeel = DoorDeWeeks.getWeek().get(keuze).getDagdeel();
+                break;
             } else {App.foutMelding(scanner);
             }
         }App.clearScreen(); return dagdeel;
