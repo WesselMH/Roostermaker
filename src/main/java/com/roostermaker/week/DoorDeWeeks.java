@@ -21,13 +21,10 @@ public class DoorDeWeeks extends Week{
                     "5) Vrijdag");
             int keuze = scanner.nextInt();
             if(keuze > 0 && keuze < 6){
-                if (keuze == 1) {return "Maandag";}
-                if (keuze == 2) {return "Dinsdag";}
-                if (keuze == 3) {return "Woensdag";}
-                if (keuze == 4) {return "Donderdag";}
-                if (keuze == 5) {return "Vrijdag";}
-            else{App.foutMelding(scanner);}
+                dag = DoorDeWeeks.getWeek().get(keuze - 1).getDag();
+                return dag;
             }
+            else{App.foutMelding(scanner);}            
         }
     }
 
@@ -40,9 +37,8 @@ public class DoorDeWeeks extends Week{
                     "3) Avond");
             int keuze = scanner.nextInt();
             if (keuze > 0 && keuze < 4) {
-                if (keuze == 1) {dagdeel = "ochtend";}
-                if (keuze == 2) {dagdeel = "middag";} 
-                else {dagdeel = "avond";} break;
+                dagdeel = DoorDeWeeks.getWeek().get(keuze - 1).getDagdeel();
+                break;
             } else {App.foutMelding(scanner);}
         }App.clearScreen(); return dagdeel;
     }
