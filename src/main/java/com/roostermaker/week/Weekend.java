@@ -19,6 +19,7 @@ public class Weekend extends Week{
             int keuze = scanner.nextInt();
             if (keuze > 0 && keuze < 3) {
                 dag = DoorDeWeeks.getWeek().get(keuze + 4).getDag();
+                App.clearScreen();
                 return dag;
             } else {App.foutMelding();}
         }

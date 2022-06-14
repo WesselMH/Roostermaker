@@ -4,18 +4,13 @@ import com.roostermaker.Scanner.ScannerV3;
 import com.roostermaker.week.Week;
 
 public class Rooster {
-    private static String dag;
     private static int scanDag;
-    private static String dagdeel;
     private static Week dagVanDWeek;
 
     
     public static void roosterInvullen(){
         Week selectedDag = isWeekend();
-        dag = selectedDag.getDagVanWeek();
-        App.clearScreen();
-        dagdeel = selectedDag.getGekozenDagDeel();
-        System.out.println("Gekozen dag met dagdeel:" + "\n" + dag + " " + dagdeel);
+        System.out.println("Gekozen dag met dagdeel:" + "\n" + selectedDag.getDagVanWeek() + " " + selectedDag.getGekozenDagDeel());
         System.out.println();
     }
 
