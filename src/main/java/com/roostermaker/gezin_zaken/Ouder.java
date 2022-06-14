@@ -1,6 +1,5 @@
 package com.roostermaker.gezin_zaken;
 
-
 public class Ouder extends Gezin {
     
     public Ouder(String naam, int beschikbareTijd) {
